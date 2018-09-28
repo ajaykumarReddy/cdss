@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view contentType="text/html" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<html>
+
+<h:head>
+
+	<!-- For Bootstrap responsive grid -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form enctype="multipart/form-data" prependId="false">
+
+		<div class="container">
+			<p:button value="Go to Search" outcome="/index" icon="fa fa-home" />
+			<p:commandButton value="Add MetaDaa" actionListener="#{formController.createMetaData}"
+				icon="fa fa-plus" ajax="false" immediate="true" />
+			<div class="row">
+				<div class="col-md-6">
+					<p:messages globalOnly="true" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p:panel header="Add Document" styleClass="form-horizontal">
+						<div class="form-group">
+							<p:outputLabel value="Code" for="code"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="code" value="#{documentBean.code}"
+									pt:placeholder="Code" required="true">
+								</p:inputText>
+							</div>
+							<p:outputLabel value="ShortTitle" for="ShortTitle"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="ShortTitle" value="#{documentBean.shortTitle}"
+									pt:placeholder="Short Title" required="true">
+								</p:inputText>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<p:outputLabel value="Full Title" for="fullTitle"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="fullTitle" value="#{documentBean.fullTitle}"
+									pt:placeholder="fullTitle" required="true">
+								</p:inputText>
+							</div>
+							<p:outputLabel value="Edition" for="edition"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="edition" value="#{documentBean.edition}"
+									pt:placeholder="edition" required="true">
+								</p:inputText>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<p:outputLabel value="Version" for="version"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="version" value="#{documentBean.version}"
+									pt:placeholder="version" required="true">
+								</p:inputText>
+							</div>
+							<p:outputLabel value="Classification" for="classification"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="classification"
+									value="#{documentBean.classification}"
+									pt:placeholder="classification" required="true">
+								</p:inputText>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<p:outputLabel value="Working Group" for="workingGroup"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="workingGroup"
+									value="#{documentBean.workingGroup}"
+									pt:placeholder="workingGroup" required="true">
+								</p:inputText>
+							</div>
+							<p:outputLabel value="Remarks" for="remarks"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="remarks" value="#{documentBean.remarks}"
+									pt:placeholder="remarks" required="true">
+								</p:inputText>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<p:outputLabel value="Custodian" for="Custodian"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-3">
+								<p:inputText id="Custodian" value="#{documentBean.custodian}"
+									pt:placeholder="workingGroup" required="true">
+								</p:inputText>
+							</div>
+
+						</div>
+						<div class="form-group">
+
+							<p:outputLabel value="File" for="uploadfile"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-9">
+								<p:fileUpload id="uploadfile" value="#{documentBean.file}"
+									mode="simple" />
+							</div>
+
+
+						</div>
+
+
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+								<p:commandButton value="Add"
+									actionListener="#{formController.add}" icon="fa fa-plus"
+									ajax="false" />
+
+
+
+							</div>
+						</div>
+
+					</p:panel>
+				</div>
+			</div>
+
+		</div>
+
+
+	</h:form>
+</h:body>
+
+	</html>
+</f:view>

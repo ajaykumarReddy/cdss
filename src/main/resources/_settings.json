@@ -1,0 +1,42 @@
+{
+  "name" : "filereadingjob",
+  "fs" : {
+    "url" : "C:\\Users\\umagupalli\\Downloads\\drive",
+    "update_rate" : "1m",
+    "excludes" : [ "*/~*" ],
+    "json_support" : false,
+    "filename_as_id" : true,
+    "add_filesize" : true,
+    "remove_deleted" : true,
+    "add_as_inner_object" : false,
+    "store_source" : true,
+    "index_content" : true,
+    "attributes_support" : true,
+    "raw_metadata" : true,
+    "xml_support" : false,
+    "index_folders": true,
+    "indexed_chars": "100%",
+    "lang_detect" : true,
+    "continue_on_error" : false,
+    "pdf_ocr" : true,
+    "ocr" : {
+      "language" : "eng"
+    }
+  },
+  "elasticsearch" : {
+    "nodes" : [ {
+      "host" : "127.0.0.1",
+      "port" : 9200,
+      "scheme" : "HTTP"
+    } ],
+    "bulk_size" : 100,
+    "flush_interval" : "5s",
+    "byte_size" : "10mb"
+  },
+  "rest" : {
+    "scheme" : "HTTP",
+    "host" : "127.0.0.1",
+    "port" : 8080,
+    "endpoint" : "fscrawler"
+  }
+}

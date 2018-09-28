@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view contentType="text/html" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<html>
+
+<h:head>
+
+	<!-- For Bootstrap responsive grid -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form id="form">
+
+		<div>
+			<p:button value="Go to Add Document" outcome="/addDocument"
+				icon="fa fa-home" />
+			<p:button value="Go to MetricBeats" outcome="/metricbeats"
+				icon="fa fa-home" />
+			<div class="row">
+				<div class="col-md-12">
+					<p:panel header="Search" styleClass="form-horizontal">
+						<div class="form-group">
+							<p:outputLabel value="Search Term" for="field"
+								styleClass="col-sm-3 control-label" />
+							<div class="col-sm-9">
+								<p:inputText id="field" value="#{formBean.field}"
+									pt:placeholder="Input a value" required="true">
+									<f:validateLength minimum="2" />
+								</p:inputText>
+								<p:messages for="field" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+								<p:commandButton value="Search"
+									action="#{formController.submit}" ajax="false"
+									icon="fa fa-search" />
+
+							</div>
+						</div>
+
+					</p:panel>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<p:messages globalOnly="true" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p:panel header="Search results">
+						<!-- <p:dataList value="#{formBean.submittedValues}" var="value"
+							type="ordered">
+            #{value.code}
+          </p:dataList> -->
+
+						<p:dataTable var="document" value="#{formBean.documents}"
+							rowExpandMode="single" expandedRow="true">
+							<p:column>
+								<p:rowToggler />
+
+							</p:column>
+
+							<p:column headerText="Code">
+								<h:outputText value="#{document.code}" />
+							</p:column>
+							<p:column headerText="Short Title">
+								<h:outputText value="#{document.shortTitle}" />
+							</p:column>
+							<p:column headerText="FullTitle">
+								<h:outputText value="#{document.fullTitle}" />
+							</p:column>
+							<p:column headerText="Edition">
+								<h:outputText value="#{document.edition}" />
+							</p:column>
+							<p:column headerText="Version">
+								<h:outputText value="#{document.version}" />
+							</p:column>
+							<p:column headerText="Classification">
+								<h:outputText value="#{document.classification}" />
+							</p:column>
+							<p:column headerText="Custodian">
+								<h:outputText value="#{document.custodian}" />
+							</p:column>
+							<p:column headerText="WorkingGroup">
+								<h:outputText value="#{document.workingGroup}" />
+							</p:column>
+							<p:column headerText="Remarks">
+								<h:outputText value="#{document.remarks}" />
+							</p:column>
+							<p:column headerText="Sentence" style="width:300px;">
+								<h:outputText value="#{document.sentence}" />
+							</p:column>
+							<!-- <p:column headerText="Content" style="width:300px;">
+								<h:outputText value="#{document.content}" />
+							</p:column> -->
+
+							<p:rowExpansion style="width:300px;">
+								<h:outputText value="#{document.content}" />
+							</p:rowExpansion>
+						</p:dataTable>
+					</p:panel>
+				</div>
+			</div>
+		</div>
+
+	</h:form>
+</h:body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		rowExpansion(PF('dataTableWidgetVar'));
+	});
+
+	function rowExpansion(dataTable) {
+		//dataTable should be the widgetVar object
+		var $this = dataTable;
+		//add the 'hand' when hovering on row
+		$this.tbody.children('tr').css('cursor', 'pointer')
+		$this.tbody.off('click.datatable-expansion', '> tr').on(
+				'click.datatable-expansion', '> tr', null, function() {
+					//before expanding collapse all rows
+					$this.collapseAllRows();
+					//toggle the current row the old toggler
+					$this.toggleExpansion($(this).find('div.ui-row-toggler'));
+				});
+	}
+</script>
+
+	</html>
+</f:view>

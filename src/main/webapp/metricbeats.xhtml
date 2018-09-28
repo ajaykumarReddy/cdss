@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view contentType="text/html" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<html>
+
+<h:head>
+
+	<!-- For Bootstrap responsive grid -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+</h:head>
+
+<h:body>
+
+	<h:form id="form">
+
+		<div class="container">
+			<p:button value="Go to Home" outcome="/index" icon="fa fa-home" />
+			<p:button value="Go to Add Document" outcome="/addDocument"
+				icon="fa fa-home" />
+
+
+			<p:panel header="ElasticSearch Metrics" styleClass="form-horizontal">
+				<div class="form-group">
+					<h:outputText value="Cluster Name:" style="font-weight:bold" />
+					<h:outputText value="#{formController.metricsBeat.clusterName}" />
+				</div>
+				<div class="form-group">
+					<h:outputText value="Cluster State:" style="font-weight:bold" />
+					<h:outputText value="#{formController.metricsBeat.clusterState}" />
+				</div>
+				<div class="form-group">
+					<h:outputText value="Number of Nodes:" style="font-weight:bold" />
+					<h:outputText value="#{formController.metricsBeat.numberOfNodes}" />
+				</div>
+				<div class="form-group">
+					<h:outputText value="Primary Shards:" style="font-weight:bold" />
+					<h:outputText value="#{formController.metricsBeat.primaryShards}" />
+				</div>
+				<div class="form-group">
+					<h:outputText value="Replica Shards:" style="font-weight:bold" />
+					<h:outputText value="#{formController.metricsBeat.replicaShards}" />
+				</div>
+
+
+			</p:panel>
+		</div>
+
+
+	</h:form>
+</h:body>
+
+	</html>
+</f:view>
