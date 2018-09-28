@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cdss</groupId>
+	<artifactId>cdss</artifactId>
+	<name>Thorntail Example</name>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<version.thorntail>2.2.0.Final</version.thorntail>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.postgresql>9.4-1206-jdbc42</version.postgresql>
+		<primefaces.version>6.0</primefaces.version>
+		<javaee_api.version>7.0</javaee_api.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.thorntail</groupId>
+				<artifactId>bom-all</artifactId>
+				<version>${version.thorntail}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<finalName>cdss</finalName>
+		<plugins>
+			<plugin>
+				<groupId>io.thorntail</groupId>
+				<artifactId>thorntail-maven-plugin</artifactId>
+				<version>${version.thorntail}</version>
+
+				<executions>
+					<execution>
+						<goals>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>io.thorntail</groupId>
+			<artifactId>cdi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.thorntail</groupId>
+			<artifactId>ejb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.thorntail</groupId>
+			<artifactId>datasources</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.thorntail</groupId>
+			<artifactId>jsf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.thorntail</groupId>
+			<artifactId>jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${version.postgresql}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>0.19.0.RC1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.searchbox</groupId>
+			<artifactId>jest</artifactId>
+			<version>6.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee_api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.faces/jsf-api -->
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- Repository: http://repository.primefaces.org/ -->
+		<!-- include a custom theme jar -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+
+
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+</project>

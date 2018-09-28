@@ -1,0 +1,16 @@
+swarm:
+  datasources:
+    jdbc-drivers:
+      org.postgresql:
+        driver-class-name: org.postgresql.Driver
+        xa-datasource-class-name: org.postgresql.xa.PGXADataSource
+        driver-module-name: org.postgresql
+    data-sources:
+      HelloWorldDS:
+        driver-name: org.postgresql
+        connection-url: jdbc:postgresql://localhost:5432/cdss
+        user-name: postgres
+        password: postgres
+        
+elasticSearchurl: http://localhost:9200
+ 

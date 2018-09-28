@@ -18,6 +18,8 @@ import com.cdss.model.IndexedDocument;
 @RequestScoped
 public class CommonDao {
 
+	
+	
 	@PersistenceContext
 	EntityManager em;
 
